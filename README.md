@@ -1,6 +1,6 @@
 <h2>Welcome</h2>
 
-<p>This project is only a couple of days old and is a play around with the latest Laravel 7, mostly utilising the new view component system.</p>
+<p>This project is only a couple of days old and is a play around with the latest Laravel 7, mostly utilising the new Blade component system.</p>
 <i>Laravel readme details below.</i>
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
