@@ -5,5 +5,11 @@
 @endpush
 
 @push('main')
-    <h1>Welcome to the {{ $pageTitle }} page</h1>
+    <div class="container">
+        <x-utilities.jumbotron
+            class="p-5 jumbotron-fluid"
+            title="Welcome to the {{ $pageTitle }} page"
+            lead="This is an experimental section with a paragraph for testing."
+        />
+    </div>
 @endpush

@@ -14,12 +14,12 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table
-                ->id()
-                ->string('slug')
-                ->longText('body')
-                ->softDeletes('deleted_at', 0)
-                ->timestamps();
+            $table->id();
+            $table->string('slug');
+            $table->longText('body');
+            $table->softDeletes('deleted_at', 0);
+            $table->timestamps();
+            $table->timestamp('published_at')->nullable();
         });
     }
 
