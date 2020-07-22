@@ -1,7 +1,15 @@
 @extends(env('LAYOUTS_MASTER'))
 
 @push('main')
-    <h1>Say hello to a user</h1>    
-{{ dump($post ?? '') }}
-    <p>This is the users name: {{ $post ?? ''->body }}</p>
+    <section>
+        <div class="container">
+            <x-utilities.jumbotron
+                class="p-5 jumbotron-fluid"
+                title="{{ $post->title }}"
+                lead="{{ $post->sub_title ?? '' }}"
+            />
+
+            <p>{{ $post->body }}</p>
+        </div>
+    </section>
 @endpush
