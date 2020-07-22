@@ -1,4 +1,4 @@
-@extends('master')
+@extends(env('LAYOUTS_MASTER'))
 
 @push('main')
     <div class="container">

@@ -26,7 +26,6 @@
             </div>
         </div>
     @endpush
-
 @endauth
 
 @guest
