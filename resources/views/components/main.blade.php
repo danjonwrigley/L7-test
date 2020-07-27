@@ -1,5 +1,4 @@
-<main class="py-5">
+<main class="{{ $class ?? null }}">
     {{ $slot }}
-
     @stack('main')
 </main>

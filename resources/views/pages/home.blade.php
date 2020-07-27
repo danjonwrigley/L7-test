@@ -8,7 +8,7 @@
     <section>
         <div class="container">
             <x-utilities.jumbotron
-                class="p-5 jumbotron-fluid"
+                fluid="1"
                 title="Welcome to the {{ $pageTitle }} page"
                 lead="This is an experimental section with a paragraph for testing."
             />

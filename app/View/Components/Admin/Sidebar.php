@@ -4,20 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Main extends Component
+class sidebar extends Component
 {
-    public $title;
-    public $class;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $class)
+    public function __construct()
     {
-        $this->title = $title;
-        $this->class = $class;
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ class Main extends Component
      */
     public function render()
     {
-        return view('components.main');
+        return view('components.admin.sidebar');
     }
 }

@@ -9,19 +9,17 @@ class Jumbotron extends Component
     public $title;
     public $titleClass;
     public $lead;
-    public $classes;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $titleClass, $lead, $classes)
+    public function __construct($title, $titleClass, $lead)
     {
         $this->title = $title;
         $this->titleClass = $titleClass;
         $this->lead  = $lead;
-        $this->classes = $classes;
     }
 
     /**
