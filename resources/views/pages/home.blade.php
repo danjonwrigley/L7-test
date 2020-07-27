@@ -5,13 +5,30 @@
 @endpush
 
 @push('main')
-    <div class="container">
-        <x-utilities.jumbotron
-            class="p-5 jumbotron-fluid"
-            title="Welcome to the {{ $pageTitle }} page"
-            lead="This is an experimental section with a paragraph for testing."
-        />
-    </div>
+    <section>
+        <div class="container">
+            <x-utilities.jumbotron
+                class="p-5 jumbotron-fluid"
+                title="Welcome to the {{ $pageTitle }} page"
+                lead="This is an experimental section with a paragraph for testing."
+            />
+
+            <x-utilities.cards.w-image
+                cardImage="https://via.placeholder.com/150"
+                cardHeader="1"
+                cardTitle="Some title for a card"
+                cardText="Wow! this is a card! :D"
+                cardLinkHref="{{ '#' }}"
+                cardLinkText="{{ 'this is a link' }}"
+            />
+
+            <x-utilities.alert
+                type="warning"
+                title="this is a warning"
+                subtitle="this warning means you have been warned."
+            />
+        </div>
+    </section>
 
     <x-utilities.modal
         modalTitle="Testing a modal component"

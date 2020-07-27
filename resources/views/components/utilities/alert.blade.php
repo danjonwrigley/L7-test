@@ -1,6 +1,6 @@
-<div class="alert alert-{{ $type }}" role="alert">
-    <h4 class="alert-heading">{{ $title }}</h4>
-    <h2 class="align-self-center">{{ $slot }}</h2>
-    <hr>
-    <p class="mb-0">{{ $subtitle }}</p>
+<div class="alert alert-{{ $alertType ?? '' }}" role="alert">
+    <h4 class="alert-heading">{{ $alertTitle ?? '' }}</h4>
+    @if ($subtitle)
+        <h2 class="align-self-center">{{ $alertSubtitle ?? '' }}</h2>
+    @endif
 </div>

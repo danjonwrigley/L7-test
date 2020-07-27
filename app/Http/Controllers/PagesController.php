@@ -37,6 +37,6 @@ class PagesController extends Controller
     {
         $pageTitle = Str::ucfirst('admin');
 
-        return view('pages.admin', compact('pageTitle'));
+        return view('admin.dashboard', compact('pageTitle'));
     }
 }

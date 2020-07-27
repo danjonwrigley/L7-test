@@ -4,18 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Alert extends Component
+class card extends Component
 {
-    public $alertType;
-    public $alertTitle;
-    public $alertSubtitle;
+    public $cardHeader;
+    public $cardTitle;
+    public $cardText;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($alertType, $alertTitle, $alertSubtitle)
+    public function __construct($cardHeader, $cardTitle, $cardText)
     {
         //
     }
@@ -27,6 +27,6 @@ class Alert extends Component
      */
     public function render()
     {
-        return view('components.alert');
+        return view('components.utilities.cards.full-width');
     }
 }
