@@ -7,5 +7,6 @@
 
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
+    {{ $slot }}
     @stack('head')
 </head>
