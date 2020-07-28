@@ -7,15 +7,14 @@ use Illuminate\View\Component;
 class card extends Component
 {
     public $cardHeader;
-    public $cardTitle;
-    public $cardText;
+    public $cardContent;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($cardHeader, $cardTitle, $cardText)
+    public function __construct($cardHeader, $cardContent)
     {
         //
     }

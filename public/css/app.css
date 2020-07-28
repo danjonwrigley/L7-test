@@ -8347,7 +8347,7 @@ button.bg-dark:focus {
   padding-left: 1.5rem !important;
 }
 
-.p-5 {
+.p-5, .jumbotron {
   padding: 3rem !important;
 }
 

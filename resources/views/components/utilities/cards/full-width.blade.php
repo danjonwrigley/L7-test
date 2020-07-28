@@ -2,8 +2,7 @@
     <div class="card-header">{{ $cardHeader ?? '' }}</div>
 
     <div class="card-body">
-        <h5 class="card-title">{{ $cardTitle ?? '' }}</h5>
-        <p class="card-text">{{ $cardText ?? '' }}</p>
-        {{ $slot }}
+        {!! $cardContent ?? '<p>This card is missing content</p>' !!}
+        {!! $slot !!}
     </div>
 </div>
