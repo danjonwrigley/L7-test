@@ -28,15 +28,4 @@ class PagesController extends Controller
 
         return view('pages.about', compact('pageTitle'));
     }
-
-    /**
-     * [Controller for the admin page]
-     * @return [view object] [pass the pages title to the view]
-     */
-    public function admin()
-    {
-        $pageTitle = Str::ucfirst('admin');
-
-        return view('admin.dashboard', compact('pageTitle'));
-    }
 }

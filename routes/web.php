@@ -33,7 +33,7 @@ Route::get('payments', 'PaymentsController@store')->name('payments');
 // Admin section
 Auth::routes();
 
-Route::get('admin', 'PagesController@admin')->name('admin');
+Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
 Route::get('logout', function ()
 {
     Auth::logout();

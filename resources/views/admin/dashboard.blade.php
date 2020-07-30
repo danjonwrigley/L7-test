@@ -11,35 +11,29 @@
             title="Welcome to the dashboard {{ Auth::user()->name }}"
         />
 
-        <div class="grid grid-cols-3 gap-4">
-            <x-utilities.cards.full-width
-                cardHeader="No. of posts"
-                cardContent="<canvas id='canvas'></canvas>"
-            />
+        <div class="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-3 gap-4">
+            @foreach ($charts as $chart)
+                <x-utilities.cards.chart
+                    class="col-span-4 sm:col-span-4 md:col-span-2 lg:col-span-2 xl:col-span-1"
+                    cardHeader="No. of {{ $chart['name'] }}"
+                    cardContent="<canvas id='{{ $chart['name'] }}' height='200'></canvas>"
+                />
+            @endforeach
 
-            <x-utilities.cards.full-width
+            <x-utilities.cards.content
+                class="col-span-4"
                 cardHeader="Dashboard"
                 cardTitle="Some title for a card"
             />
 
-            <x-utilities.cards.full-width
+            <x-utilities.cards.content
+                class="col-span-2 lg:col-span-2 md:col-span-1 xl:col-span-2"
                 cardHeader="Dashboard"
                 cardTitle="Some title for a card"
             />
 
-            <x-utilities.cards.full-width
-                cardHeader="Dashboard"
-                cardTitle="Some title for a card"
-            />
-
-            <x-utilities.cards.full-width
-                class="col-span-3"
-                cardHeader="Dashboard"
-                cardTitle="Some title for a card"
-            />
-
-            <x-utilities.cards.full-width
-                class="col-span-3"
+            <x-utilities.cards.content
+                class="col-span-2 lg:col-span-2 md:col-span-1 xol-col-span-1"
                 cardHeader="Dashboard"
                 cardTitle="Some title for a card"
             />
@@ -48,35 +42,28 @@
 
     @push('deferred')
         <script>
-            let data = {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Posts',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            ctx = document.getElementById('canvas').getContext('2d'),
-            myChart = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-            });
+            // Get the data for the required charts
+            let posts = {!! json_encode($charts['posts'], JSON_HEX_TAG) !!},
+                users = {!! json_encode($charts['users'], JSON_HEX_TAG) !!},
+                msgs = {!! json_encode($charts['msgs'], JSON_HEX_TAG) !!};
+
+            let postsTarget = document.getElementById(posts.name),
+                postsChart = new Chart(postsTarget, {
+                    type: posts.type,
+                    data: posts.data,
+                });
+
+            let usersTarget = document.getElementById(users.name),
+                usersChart = new Chart(usersTarget, {
+                    type: users.type,
+                    data: users.data,
+                });
+
+            let msgsTarget = document.getElementById(msgs.name),
+                msgsChart = new Chart(msgsTarget, {
+                    type: msgs.type,
+                    data: msgs.data,
+                });
         </script>
     @endpush
 @endauth
