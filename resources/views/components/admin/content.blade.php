@@ -1,4 +1,4 @@
-<div id="content" class="w-full lg:w-10/12 p-2 lg:p-8 {{ $class ?? '' }}">
+<div id="content" class="content p-4 {{ $class ?? null }}">
     {{ $slot }}
     @stack('content')
 </div>

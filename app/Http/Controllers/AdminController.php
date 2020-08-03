@@ -102,6 +102,76 @@ class AdminController extends Controller
             ],
         ];
 
-        return view('admin.dashboard', compact('charts', 'pageTitle'));
+        $table = [
+            'columnNames' => ['1', '2', '3', '4', '5', '6',],
+            'rows' => [
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+                [
+                    'data 1',
+                    'data 2',
+                    'data 3',
+                    'data 4',
+                    'data 5',
+                    'data 6',
+                ],
+            ]
+        ];
+
+        return view('admin.dashboard', compact('charts', 'pageTitle', 'table'));
     }
 }

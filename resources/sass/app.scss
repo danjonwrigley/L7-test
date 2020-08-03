@@ -8,7 +8,11 @@
 @tailwind components;
 @tailwind utilities;
 
+// Data Tables
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.css';
+
 // Variables
 @import 'variables';
 @import 'custom';
 @import 'defaults';
+@import 'buttons';

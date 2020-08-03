@@ -20,11 +20,12 @@ Route::permanentRedirect('/home', '/');
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('about', 'PagesController@about')->name('about');
 
-Route::get('users', 'UsersController@showAll')->name('users');
-Route::get('users/{id}', 'UsersController@show')->name('user');
+Route::get('admin/users', 'UsersController@showAll')->name('users');
+Route::get('admin/users/{id}', 'UsersController@show')->name('user');
+Route::get('admin/users/{id}/edit', 'UsersController@edit')->name('user-edit');
 
-Route::get('posts', 'PostsController@showAll')->name('posts');
-Route::get('posts/{slug}', 'PostsController@show')->name('post');
+Route::get('admin/posts', 'PostsController@showAll')->name('posts');
+Route::get('admin/posts/{slug}', 'PostsController@show')->name('post');
 
 // Payments
 Route::get('payments/create', 'PaymentsController@create')->name('payment-create');
@@ -33,8 +34,8 @@ Route::get('payments', 'PaymentsController@store')->name('payments');
 // Admin section
 Auth::routes();
 
-Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
-Route::get('logout', function ()
+Route::get('admin/dashboard', 'AdminController@dashboard')->name('dashboard');
+Route::get('admin/logout', function ()
 {
     Auth::logout();
     return Redirect::to('home');

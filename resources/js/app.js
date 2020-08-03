@@ -35,3 +35,8 @@ const app = new Vue({
  * Chart.JS install
  */
 const Chart = require('Chart.js');
+
+/**
+ * DataTables w/ bootstrap
+ */
+const dtb = require('datatables.net-bs4');

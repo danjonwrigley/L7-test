@@ -4,16 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class card extends Component
+class DataTable extends Component
 {
+    public $cardTableData;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($cardTableData)
     {
-        //
+        $this->cardTableData = $cardTableData;
     }
 
     /**
@@ -23,6 +25,6 @@ class card extends Component
      */
     public function render()
     {
-        return view('components.utilities.cards.w-image');
+        return view('components.cards.datatable');
     }
 }

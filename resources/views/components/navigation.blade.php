@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-    <a class="navbar-brand">Xbite</a>
+<nav class="shadow-sm navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand">{{ env('BRAND_TEXT') }}</a>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav mr-auto">
+        <div class="mr-auto navbar-nav">
             <a class="nav-item nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
             <a class="nav-item nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
             
@@ -10,7 +10,7 @@
             @stack('navigation')
         </div>
 
-        <div class="navbar-nav ml-auto">
+        <div class="ml-auto navbar-nav">
             @guest
                 <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

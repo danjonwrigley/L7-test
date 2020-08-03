@@ -1,14 +1,25 @@
 .sidebar {
-    @apply w-2/12 bg-gray-200 border-r-2 border-gray-300;
+    @apply w-1/12 bg-gray-100 border-r-2 border-gray-300;
+    min-width: 200px;
+}
+
+.content {
+    @apply w-full;
+}
+
+@screen lg {
+    .content {
+        @apply w-11/12;
+    }
 }
 
 .nav-linked {
     @extend .nav-link, .p-3;
-    @apply border-b-2; // Tailwind
+    @apply border-b-2 text-sm;
 
     &-odd {
         @extend .nav-linked;
-        @apply bg-gray-100; // Tailwind
+        @apply bg-gray-200;
     }
 }
 

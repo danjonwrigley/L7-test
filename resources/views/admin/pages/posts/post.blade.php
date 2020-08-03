@@ -1,6 +1,6 @@
-@extends(env('LAYOUTS_MASTER'))
+@extends(env('LAYOUTS_ADMIN'))
 
-@push('main')
+@push('content')
     <section>
         <div class="container">
             <x-utilities.jumbotron
