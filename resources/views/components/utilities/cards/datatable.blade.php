@@ -2,7 +2,7 @@
     <div class="card-header">{{ $cardHeader ?? '' }}</div>
 
     <div class="card-body">
-        <table id="{{ $cardTableId ?? null }}" class="table table-striped table-bordered display dataTable no-footer">
+        <table id="{{ $cardTableId ?? null }}" class="table table-striped table-bordered display responsive" style="width: 100%">
             <thead>
                 <tr>
                     @foreach ($cardTableData['columnNames'] as $columnName)

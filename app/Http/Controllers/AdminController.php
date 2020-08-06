@@ -174,4 +174,26 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact('charts', 'pageTitle', 'table'));
     }
+
+    /**
+     * Get all columns from the required table
+     * @param string $table 'name of the table in the database'
+     * @return object
+     */
+    static function getTableColumns($table)
+    {
+        return Schema::getColumnListing($table);
+    }
+
+    /**
+     * Create a button for the table row to link to the entity
+     * @param string $href 'path to entity'
+     * @param string $text 'text that shows in the button'
+     * @param string $classes 'any bespoke classes to add to this component'
+     * @return string
+     */
+    static function createViewButton($href, $text, $classes)
+    {
+        return '<a href="'. $href . '" class="' . $classes . '">' . $text . '</a>';
+    }
 }

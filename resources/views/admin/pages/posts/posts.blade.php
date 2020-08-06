@@ -5,9 +5,9 @@
     <div class="grid grid-cols-4 gap-4">
         <x-utilities.cards.datatable
             class="col-span-4"
-            cardHeader="Table"
+            cardHeader="List of all posts"
             cardTableId="posts"
-            :cardTableData="$posts"
+            :cardTableData="$table"
         />
     </div>
 @endpush
@@ -21,6 +21,12 @@
                 'lengthMenu' : [
                     [5, 10, 25, 50, 100, -1],
                     [5, 10, 25, 50, 100, "All"],
+                ],
+                "columnDefs": [
+                    {
+                        "className" : "no-wrap",
+                        "targets" : 4
+                    },
                 ],
             });
         });

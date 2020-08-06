@@ -1,6 +1,6 @@
-@extends(env('LAYOUTS_ADMIN'))
-
 @auth
+    @extends(env('LAYOUTS_ADMIN'))
+    
     @push('head')
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @endpush

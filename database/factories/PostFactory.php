@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User as User;
+use App\Post;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,12 +17,15 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Post::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => Hash::make('password'), // password
-        'remember_token' => Str::random(10),
+        'slug' => Str::lower($faker->word),
+        'title' => $faker->sentence,
+        'body' => $faker->text($maxNbChars = 300),
+        'deleted_at' => null,
+        'created_at' => now(),
+        'updated_at' => null,
+        'published_at' => null,
+        'authored_by' => 1,
     ];
 });

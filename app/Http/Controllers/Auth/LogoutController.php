@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LogoutController extends Controller
 {
@@ -11,8 +13,10 @@ class LogoutController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __invoke()
     {
-        //
+        Auth::logout();
+
+        return Redirect::to('home');
     }
 }

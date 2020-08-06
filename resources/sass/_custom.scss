@@ -26,3 +26,7 @@
 .jumbotron {
     @extend .p-5; 
 }
+
+.no-wrap {
+    white-space: nowrap;
+}

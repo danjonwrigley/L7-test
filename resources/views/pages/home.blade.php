@@ -23,9 +23,9 @@
             />
 
             <x-utilities.alert
-                type="warning"
-                title="this is a warning"
-                subtitle="this warning means you have been warned."
+                alertType="warning"
+                alertTitle="this is a warning"
+                alertSubtitle="this warning means you have been warned."
             />
         </div>
     </section>

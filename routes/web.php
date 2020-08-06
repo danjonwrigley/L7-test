@@ -26,6 +26,7 @@ Route::get('admin/users/{id}/edit', 'UsersController@edit')->name('user-edit');
 
 Route::get('admin/posts', 'PostsController@showAll')->name('posts');
 Route::get('admin/posts/{slug}', 'PostsController@show')->name('post');
+Route::get('admin/posts/{slug}/edit', 'PostsController@edit')->name('post-edit');
 
 // Payments
 Route::get('payments/create', 'PaymentsController@create')->name('payment-create');
@@ -35,8 +36,4 @@ Route::get('payments', 'PaymentsController@store')->name('payments');
 Auth::routes();
 
 Route::get('admin/dashboard', 'AdminController@dashboard')->name('dashboard');
-Route::get('admin/logout', function ()
-{
-    Auth::logout();
-    return Redirect::to('home');
-});
+Route::get('admin/logout', 'Auth\LogoutController')->name('logout');

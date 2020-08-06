@@ -3,39 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use App\Post;
+use App\Http\Controllers\AdminController as Admin;
 
 class PostsController extends Controller
 {
+    /**
+     * Make a collection of all posts and render them inside a table
+     * @return view
+     */
     public function showAll()
     {
-        $table = [
-            'columnNames' => ['Name', 'Email', 'Content', 'Created', 'Updated', 'Published', 'Post'],
-        ];
-
-        $posts = Post::all()->reject(function ($deleted_at) {
-            return empty($deleted_at);
-        });
-
-        foreach ($posts as $post)
+        if (Schema::hasTable('posts'))
         {
-            // Create a table row for each row in the collection
-            $table['rows'][] = [
-                $post->title,
-                $post->slug,
-                $post->body,
-                $post->created_at,
-                $post->updated_at,
-                $post->published_at,
-                self::createViewButton(route('post', $post->slug), 'View', 'btn btn-primary'),
+            // Get specific columns otherwise call Admin::getTableColumns('<tablename>) for all columns
+            $table = [
+                'columnNames' => ['Title', 'Slug', 'Created', 'Updated', 'Published', 'Actions'],
             ];
-        };
 
-        return view('admin.pages.posts.posts', [
-            'posts' => $table,
-        ]);
+            $posts = Post::all()->reject(function ($deleted_at) {
+                return empty($deleted_at);
+            });
+
+            foreach ($posts as $post)
+            {
+                // Create a table row for each row in the collection
+                $table['rows'][] = [
+                    $post->title,
+                    route('post', $post->slug),
+                    $post->created_at,
+                    $post->updated_at,
+                    $post->published_at,
+                    Admin::createViewButton(route('post-edit', $post->slug), 'Edit', 'btn btn-sm btn-success') . ' ' .
+                        Admin::createViewButton(route('post', $post->slug), 'View', 'btn btn-sm btn-primary'),
+                ];
+            };
+
+            return view('admin.pages.posts.posts', [
+                'table' => $table,
+            ]);
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
+    /**
+     * Take the slug for the post and render that to the individual page
+     * @param string $slug
+     * @return view
+     */
     public function show($slug)
     {
         return view('admin.pages.posts.post', [
@@ -44,24 +63,14 @@ class PostsController extends Controller
     }
 
     /**
-     * Get all columns from the required table
-     * @param string $table 'name of the table in the database'
-     * @return object
+     * Take the slug for the post and render that to the individual edit page
+     * @param string $slug
+     * @return view
      */
-    static function getTableColumns($table)
+    public function edit($slug)
     {
-        return Schema::getColumnListing($table);
-    }
-
-    /**
-     * Create a button for the table row to link to the entity
-     * @param string $href 'path to entity'
-     * @param string $text 'text that shows in the button'
-     * @param string $classes 'any bespoke classes to add to this component'
-     * @return string
-     */
-    static function createViewButton($href, $text, $classes)
-    {
-        return '<a href="'. $href . '" class="' . $classes . '">' . $text . '</a>';
+        return view('admin.pages.posts.edit', [
+            'post' => Post::where('slug', $slug)->firstOrFail(),
+        ]); 
     }
 }

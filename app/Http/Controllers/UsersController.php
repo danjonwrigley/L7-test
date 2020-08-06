@@ -4,68 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Schema;
 use App\User;
+use App\Http\Controllers\AdminController as admin;
 
 class UsersController extends Controller
 {
+    /**
+     * Make a collection of all users and render them inside a table
+     * @return view
+     */
     public function showAll()
     {
-        $table = [
-            'columnNames' => ['Name', 'Email', 'Created', 'Updated', 'User'],
-        ];
-
-        $users = User::all();
-
-        foreach ($users as $user)
+        if (Schema::hasTable('users'))
         {
-            // Create a table row for each row in the collection
-            $table['rows'][] = [
-                $user->name,
-                $user->email,
-                $user->created_at,
-                $user->updated_at, 
-                self::createViewButton(route('user-edit', $user->id), 'Edit', 'btn btn-success') . " " . 
-                    self::createViewButton(route('user', $user->id), 'View', 'btn btn-primary'),
+            $table = [
+                'columnNames' => ['Name', 'Email', 'Created', 'Updated', 'User'],
             ];
-        };
+            
+            $users = user::all();
 
-        return view('admin.pages.users.users', [
-            'users' => $table,
-        ]);
+            foreach ($users as $user)
+            {
+                // Create a table row for each row in the collection
+                $table['rows'][] = [
+                    $user->name,
+                    $user->email,
+                    $user->created_at,
+                    $user->updated_at, 
+                    admin::createViewButton(route('user-edit', $user->id), 'Edit', 'btn btn-sm btn-success') . " " . 
+                        admin::createViewButton(route('user', $user->id), 'View', 'btn btn-sm btn-primary'),
+                ];
+            };
+
+            return view('admin.pages.users.users', [
+                'table' => $table,
+            ]);
+        }
+        else
+        {
+            return abort(404);
+        }
     }
 
+    /**
+     * Take the id for the user and render that to the individual page
+     * @param string $id
+     * @return view
+     */
     public function show($id)
     {
         return view('admin.pages.users.user', [
-            'user' => User::where('id', $id)->firstOrFail(),
+            'user' => user::where('id', $id)->firstOrFail(),
         ]);
     }
 
+    /**
+     * Take the id for the user and render that to the individual edit page
+     * @param string $id
+     * @return view
+     */
     public function edit($id)
     {
         return view('admin.pages.users.edit', [
-            'user' => User::where('id', $id)->firstOrFail(),
+            'user' => user::where('id', $id)->firstOrFail(),
         ]); 
-    }
-
-    /**
-     * Get all columns from the required table
-     * @param string $table 'name of the table in the database'
-     * @return object
-     */
-    static function getTableColumns($table)
-    {
-        return Schema::getColumnListing($table);
-    }
-
-    /**
-     * Create a button for the table row to link to the entity
-     * @param string $href 'path to entity'
-     * @param string $text 'text that shows in the button'
-     * @param string $classes 'any bespoke classes to add to this component'
-     * @return string
-     */
-    static function createViewButton($href, $text, $classes)
-    {
-        return '<a href="'. $href . '" class="' . $classes . '">' . $text . '</a>';
     }
 }
