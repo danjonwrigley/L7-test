@@ -75,4 +75,27 @@ class PostsController extends Controller
             'users' => User::all(),
         ]); 
     }
+
+    /**
+     * Create a new post
+     * 
+     * @return view
+     * @return array $users
+     */
+    public function create()
+    {
+        return view('admin.pages.posts.create', [
+            'users' => User::all(),
+        ]);
+    }
+
+    /**
+     * Stores the incoming new post request
+     * 
+     * @return
+     */
+    public function store()
+    {
+        die('Hello');
+    }
 }

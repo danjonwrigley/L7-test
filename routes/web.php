@@ -25,6 +25,9 @@ Route::get('admin/users/{id}', 'UsersController@show')->name('user');
 Route::get('admin/users/{id}/edit', 'UsersController@edit')->name('user-edit');
 
 Route::get('admin/posts', 'PostsController@showAll')->name('posts');
+Route::post('admin/posts', 'PostsController@store')->name('post-store');
+Route::get('admin/posts/create', 'PostsController@create')->name('post-create');
+Route::get('admin/posts/delete', 'PostsController@delete')->name('post-delete');
 Route::get('admin/posts/{slug}', 'PostsController@show')->name('post');
 Route::get('admin/posts/{slug}/edit', 'PostsController@edit')->name('post-edit');
 
