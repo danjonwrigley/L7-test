@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use App\Post;
+use App\User;
 use App\Http\Controllers\AdminController as Admin;
 
 class PostsController extends Controller
@@ -71,6 +72,7 @@ class PostsController extends Controller
     {
         return view('admin.pages.posts.edit', [
             'post' => Post::where('slug', $slug)->firstOrFail(),
+            'users' => User::all(),
         ]); 
     }
 }

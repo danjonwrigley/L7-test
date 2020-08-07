@@ -30,3 +30,7 @@
 .no-wrap {
     white-space: nowrap;
 }
+
+.input-date {
+    @apply block w-full px-5 py-4 leading-tight text-gray-700 bg-gray-200 border-gray-200 appearance-none;
+}
