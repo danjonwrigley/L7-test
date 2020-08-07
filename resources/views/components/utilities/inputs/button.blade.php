@@ -1,0 +1,1 @@
+<a class="btn btn-md btn-{{ $type ?? 'primary' }} ml-2 {{ $classes ?? '' }}" href="{{ $href ?? '#' }}">{{ $text ?? 'Click' }}</a>

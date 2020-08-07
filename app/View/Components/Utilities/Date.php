@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class utilities.inputs.inputTextarea extends Component
+class inputDate extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class utilities.inputs.inputTextarea extends Component
      */
     public function render()
     {
-        return view('components.utilities.inputs.input-textarea');
+        return view('components.utilities.inputs.date');
     }
 }

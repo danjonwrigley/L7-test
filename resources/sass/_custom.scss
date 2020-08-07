@@ -31,6 +31,19 @@
     white-space: nowrap;
 }
 
-.input-date {
+.input-date,
+.input-text {
     @apply block w-full px-5 py-4 leading-tight text-gray-700 bg-gray-200 border-gray-200 appearance-none;
+}
+
+.input-textarea {
+    @apply block w-full px-5 py-4 leading-tight text-gray-700 bg-gray-200 border-gray-200 appearance-none mb-3 h-40;
+}
+
+.input-select {
+    @apply block w-full px-5 py-4 pr-8 leading-tight text-gray-700 bg-gray-200 border-gray-200 appearance-none;
+}
+
+label {
+    @apply block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase;
 }

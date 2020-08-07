@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class inputDate extends Component
+class Button extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class inputDate extends Component
      */
     public function render()
     {
-        return view('components.input-date');
+        return view('components.utilities.inputs.button');
     }
 }
